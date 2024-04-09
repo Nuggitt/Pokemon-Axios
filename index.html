@@ -17,7 +17,38 @@
     <div id="app">
         <h2>Get All Pokemons</h2>
         <button id="getAllButton" v-on:click="getAllPokemons" class="btn btn-primary">Get All Pokemons</button>
-        <table class="table" v-if="pokemons.length > 0">
+
+        <h2>Get Pokemon By ID</h2>
+        <input type="text" v-model="pokemonId" placeholder="Enter Pokemon ID">
+        <button id="getByIdButton" v-on:click="getPokemonById(pokemonId)" class="btn btn-primary">Get Pokemon By
+            ID</button>
+        <div v-if="singlePokemon != null">
+            <h3>Pokemon ID: {{singlePokemon.pokemonId}}</h3>
+            <h3>Name: {{singlePokemon.name}}</h3>
+            <h3>Type: {{singlePokemon.type}}</h3>
+        </div>
+        <div v-else>no pokemon</div>
+
+        <h2>Delete Pokemon</h2>
+        <input v-model.number="deleteId" placeholder="pokemonId" type="number" />
+        <button v-on:click="deletePokemon(deleteId)" class="btn btn-warning">Delete</button>
+        {{deleteMessage}}
+
+        <h2>Add Pokemon</h2>
+        <input v-model="addPokemonData.pokemonId" placeholder="pokemonId" type="number" />
+        <input v-model="addPokemonData.name" placeholder="name" type="text" />
+        <input v-model.number="addPokemonData.type" placeholder="type" type="text" />
+        <button v-on:click="addPokemon()" class="btn btn-success">Add</button>
+        <div>{{addMessage}}</div>
+
+        <h2>Update Pokemon</h2>
+        <input v-model.number="updatePokemonData.pokemonId" placeholder="Current Pokemon Id" type="number" />
+        <input v-model="updatePokemonData.name" placeholder="Name" type="text" />
+        <input v-model="updatePokemonData.type" placeholder="Type" type="text" />
+        <button @click="updatePokemon()" class="btn btn-success">Update</button>
+        <div>{{ updateMessage }}</div>
+
+        <table class="table table-dark" v-if="pokemons.length > 0">
             <thead>
                 <tr>
                     <th>Pokemon ID</th>
