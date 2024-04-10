@@ -19,10 +19,10 @@
         <button id="getAllButton" v-on:click="getAllPokemons" class="btn btn-primary">Get All Pokemons</button>
 
         <h2>Get Pokemon By ID</h2>
-        <input type="text" v-model="pokemonId" placeholder="Enter Pokemon ID">
+        <input type="text" v-model="pokemonId" placeholder="Enter Pokemon ID" id="inputSearchById">
         <button id="getByIdButton" v-on:click="getPokemonById(pokemonId)" class="btn btn-primary">Get Pokemon By
             ID</button>
-        <div v-if="singlePokemon != null">
+        <div v-if="singlePokemon != null" id="pokemonList">
             <h3>Pokemon ID: {{singlePokemon.pokemonId}}</h3>
             <h3>Name: {{singlePokemon.name}}</h3>
             <h3>Type: {{singlePokemon.type}}</h3>
@@ -30,8 +30,8 @@
         <div v-else>no pokemon</div>
 
         <h2>Delete Pokemon</h2>
-        <input v-model.number="deleteId" placeholder="pokemonId" type="number" />
-        <button v-on:click="deletePokemon(deleteId)" class="btn btn-warning">Delete</button>
+        <input v-model.number="deleteId" placeholder="pokemonId" type="number" id="inputDelete" />
+        <button v-on:click="deletePokemon(deleteId)" class="btn btn-warning" id="deleteButton">Delete</button>
         {{deleteMessage}}
 
         <h2>Add Pokemon</h2>

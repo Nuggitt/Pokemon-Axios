@@ -5,7 +5,7 @@ Vue.createApp({
     return {
       pokemons: [],
       singlePokemon: null,
-      pokemonId: 0,
+      pokemonId: null,
       deleteId: 0,
       deleteMessage: "",
       addPokemonData: { pokemonId: 0, name: "", type: "" },
